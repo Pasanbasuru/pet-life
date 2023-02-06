@@ -1,5 +1,5 @@
 <?php
-include($_SERVER['DOCUMENT_ROOT'] . '/pet_clinic/modules/veterinarian/permission.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/modules/veterinarian/permission.php');
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +40,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pet_clinic/modules/veterinarian/permission
         </ul>
         <div class="logout">
             <hr>
-            <a href="/pet_clinic/Auth/logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
+            <a href="/pet-life/Auth/logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
         </div>
     </div>
 

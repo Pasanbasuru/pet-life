@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($row["emp_designation"] == "Veterinarian") {
             $_SESSION['login_user'] = $myemail;
             $_SESSION['user_name'] = $row["emp_name"];
-            header("location: /pet_clinic/modules/veterinarian/controllers/dashboard.php");
+            header("location: /pet-life/modules/veterinarian/controllers/dashboard.php");
         }
 
         if ($row["emp_designation"] == "Admin") {
@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/pet_clinic/Auth/style.css">
+    <link rel="stylesheet" href="/pet-life/Auth/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Login </title>
 </head>
@@ -66,7 +66,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     <section>
         <div class="imgbox">
-            <img src="/pet_clinic/Auth/img/pngwing.png" alt="login image">
+            <img src="/pet-life/Auth/img/pngwing.png" alt="login image">
         </div>
         <div class="contentbox">
             <div class="formbox">
@@ -108,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
                 </form>
-                <div><a href="/pet_clinic">Back to Home</a></div>
+                <div><a href="/pet-life">Back to Home</a></div>
                 <div class="toast">
 
                     <div class="toast-content">

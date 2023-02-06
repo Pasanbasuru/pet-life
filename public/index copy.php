@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="/pet_clinic/public/style/landing_page.css">
+    <link rel="stylesheet" type="text/css" href="/pet-life/public/style/landing_page.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Amatic+SC&family=Poppins&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 <body>
 
     <div class="nav-bar">
-        <div class="nav-left"><img class="logo" src="/pet_clinic/public/img/logo_transparent black.png"></div>
+        <div class="nav-left"><img class="logo" src="/pet-life/public/img/logo_transparent black.png"></div>
         <div class="nav-right">
             <ul class="navbar-ul">
                 <li>Home</li>
@@ -27,7 +27,7 @@
                 <li>Contact Us</li>
                 <li>Make an appointment</li>
                 <li><a href="Admin/registration.php">Sign Up</a></li>
-                <li><a href="/pet_clinic/Auth/login.php">Login</a></li>
+                <li><a href="/pet-life/Auth/login.php">Login</a></li>
             </ul>
 
 
@@ -53,7 +53,7 @@
 
         <div class="sec-1">
             <center>
-                <div class="include"><img class="include-img" src="/pet_clinic/public/img/landing/Vector.png"><br />
+                <div class="include"><img class="include-img" src="/pet-life/public/img/landing/Vector.png"><br />
                     <font color="white"></font>
                 </div>
             </center>
@@ -72,7 +72,7 @@
 
         <div class="sec-2">
             <center>
-                <div class="include"><img class="include-img" src="/pet_clinic/public/img/landing/Vector1.png"><br />
+                <div class="include"><img class="include-img" src="/pet-life/public/img/landing/Vector1.png"><br />
                     <font color="white"></font>
                 </div>
             </center>
@@ -90,7 +90,7 @@
 
         <div class="sec-3">
             <center>
-                <div class="include"><img class="include-img" src="/pet_clinic/public/img/landing/Vector3.png"><br />
+                <div class="include"><img class="include-img" src="/pet-life/public/img/landing/Vector3.png"><br />
                     <font color="white"></font>
                 </div>
             </center>
@@ -154,7 +154,7 @@
 
             <div class="sec-5-1">
                 <a href="#">
-                    <div style="overflow:hidden; border-radius:20px;"><img class="zoom" img src="/pet_clinic/public/img/landing/sec-5.jpg" width=100% height=220px></div>
+                    <div style="overflow:hidden; border-radius:20px;"><img class="zoom" img src="/pet-life/public/img/landing/sec-5.jpg" width=100% height=220px></div>
                 </a>
                 <h3>Pet Shop</h3>
                 <p>Lorem ipsum dolor sit amet consectetur.<br />
@@ -170,7 +170,7 @@
 
             <div class="sec-5-2">
                 <a href="#">
-                    <div style="overflow:hidden; border-radius:20px;"><img class="zoom" img src="/pet_clinic/public/img/landing/sec-5.jpg" width=100% height=220px></div>
+                    <div style="overflow:hidden; border-radius:20px;"><img class="zoom" img src="/pet-life/public/img/landing/sec-5.jpg" width=100% height=220px></div>
                 </a>
                 <h3>Pet Day-Care</h3>
                 <p>Lorem ipsum dolor sit amet consectetur.<br />
@@ -184,7 +184,7 @@
 
             <div class="sec-5-3">
                 <a href="#">
-                    <div style="overflow:hidden; border-radius:20px;"><img class="zoom" img src="/pet_clinic/public/img/landing/sec-5.jpg" width=100% height=220px></div>
+                    <div style="overflow:hidden; border-radius:20px;"><img class="zoom" img src="/pet-life/public/img/landing/sec-5.jpg" width=100% height=220px></div>
                 </a>
                 <h3>Pet Boarding</h3>
                 <p>Lorem ipsum dolor sit amet consectetur.<br />
@@ -198,7 +198,7 @@
 
             <div class="sec-5-4">
                 <a href="#">
-                    <div style="overflow:hidden; border-radius:20px;"><img class="zoom" img src="/pet_clinic/public/img/landing/sec-5.jpg" width=100% height=220px></div>
+                    <div style="overflow:hidden; border-radius:20px;"><img class="zoom" img src="/pet-life/public/img/landing/sec-5.jpg" width=100% height=220px></div>
                 </a>
                 <h3>Pet Meet-Up</h3>
                 <p>Lorem ipsum dolor sit amet consectetur.<br />
@@ -228,25 +228,25 @@
     <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
     <div class="section-6">
         <div class="doc-set">
-            <div class="doc-1"><img src="/pet_clinic/public/img/doc-1.png"><br />
+            <div class="doc-1"><img src="/pet-life/public/img/doc-1.png"><br />
                 <p>Dr. John Doe</p>
             </div>
-            <div class="doc-2"><img src="/pet_clinic/public/img/doc-2.png"><br />
+            <div class="doc-2"><img src="/pet-life/public/img/doc-2.png"><br />
                 <p>Dr. Philliphinia Kane</p>
             </div>
-            <div class="doc-3"><img src="/pet_clinic/public/img/doc-3.png"><br />
+            <div class="doc-3"><img src="/pet-life/public/img/doc-3.png"><br />
                 <p>Dr. Sammy shanya</p>
             </div>
         </div>
         <br /><br />
         <div class="doc-set">
-            <div class="doc-1"><img src="/pet_clinic/public/img/doc-4.png"><br />
+            <div class="doc-1"><img src="/pet-life/public/img/doc-4.png"><br />
                 <p>Dr. Chris Gayle</p>
             </div>
-            <div class="doc-2"><img src="/pet_clinic/public/img/doc-5.png"><br />
+            <div class="doc-2"><img src="/pet-life/public/img/doc-5.png"><br />
                 <p>Dr. Tuskinya Ahmed</p>
             </div>
-            <div class="doc-3"><img src="/pet_clinic/public/img/doc-6.png"><br />
+            <div class="doc-3"><img src="/pet-life/public/img/doc-6.png"><br />
                 <p>Dr. Virati Kohli</p>
             </div>
         </div>

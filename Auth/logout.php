@@ -26,5 +26,5 @@ if(isset($_SESSION['user_name'])){
 }
 session_destroy();
 
-header('Location: /pet_clinic/Auth/login.php?logout=true');
+header('Location: /pet-life/Auth/login.php?logout=true');
 ?>
