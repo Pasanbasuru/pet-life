@@ -79,11 +79,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     <div class="inputbox">
 
-                        <label for="email"></label><input type="text" placeholder="senuri@gmail.com" name="rEmail" required>
+                        <label for="email"></label><input type="text" placeholder="Enter your email" name="rEmail" required>
                     </div>
                     <div class="inputbox">
 
-                        <label for="pass"></label><input type="password" placeholder="1234" name="rPassword">
+                        <label for="pass"></label><input type="password" placeholder="Enter your password" name="rPassword">
                     </div>
                     <div class="inputbox">
                         <button>Login</button>

@@ -35,11 +35,11 @@ while ($row = mysqli_fetch_assoc($all_medicines)) {
 // echo json_encode($medicine);
 // die();
 
-$sql = "SELECT id , lab_investigations FROM lab_investigations";
+$sql = "SELECT lab_id , lab_name FROM lab_investigations";
 $lab_inv = mysqli_query($conn, $sql);
 
 
-$sql = "SELECT id , vaccines FROM vaccines";
+$sql = "SELECT medicine_id ,medicine_name FROM medicine WHERE medicine_category='vaccines'";
 $vaccines = mysqli_query($conn, $sql);
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
