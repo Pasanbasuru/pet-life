@@ -1,0 +1,5 @@
+DirectoryIndex public/index.php
+
+ErrorDocument 404 /pet_clinic/public/404.php
+
+ErrorDocument 500 /pet_clinic/public/500.php
