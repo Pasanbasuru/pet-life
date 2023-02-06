@@ -885,6 +885,7 @@ input:checked+section.box .box-title:before {
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  z-index: 999;
 }
 .section.active .show-modal {
   display: none;

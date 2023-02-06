@@ -75,8 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sql = "INSERT INTO treatment (treatment_id,vet_id, pet_id, symptoms, definitive_diagnosis, followup_date) VALUES ('$next_t_id','E002', 'P001', '$symptoms', '$def_diagnosis', '$followup_date')";
 
         if (mysqli_query($conn, $sql) == 1) {
-            echo "<script>m();</script>";
-            // die();
+            $_SESSION['treatment_added'] = true;
         } else {
             echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
         }
@@ -377,13 +376,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 showBtn = document.querySelector('.show-modal'),
                 closeBtn = document.querySelector('.close-btn');
 
-            function m(){
+            
+            
                 section.classList.add('active');
-            }
-            showBtn.addEventListener('click', () => {
-                section.classList.add('active');
-                console.log('1');
-            });
+
+                <? if($_SESSION['treatment_added']) {
+                    echo "section.classList.add('active');";
+                    $_SESSION['treatment_added'] = false;
+                } ?>
+            
+            
+            
+            
 
 
             closeBtn.addEventListener('click', () => {
