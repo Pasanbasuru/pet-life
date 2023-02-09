@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <section class="section">
+    <!-- <section class="section">
         <button class="show-modal button">Show Modal</button>
         <span class="overlay"></span>
         <div class="modal-box">
@@ -112,7 +112,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button>Open File</button>
             </div>
         </div>
-    </section>
+    </section> -->
     <div class="sidebar">
         <div class="user-img">
             <center><img src="../images/logo_transparent black.png"></center>
@@ -210,7 +210,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             </div>
 
                             <label for="textarea">Clinical Signs/Symptoms</label>
-                            <textarea class="" name="symptoms" placeholder="balla gana kiyanna"></textarea>
+                            <textarea class="" name="symptoms" placeholder="Please type the symptoms"></textarea>
 
                             <label for="textarea">Definitive Diagnosis</label>
                             <textarea class="" name="def_diagnosis"></textarea>
