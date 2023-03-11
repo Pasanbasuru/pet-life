@@ -1,3 +1,7 @@
+# HTID:21177476: DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES BELOW
+php_value display_errors 1
+# DO NOT REMOVE OR MODIFY THIS LINE AND THE LINES ABOVE HTID:21177476:
+
 DirectoryIndex public/index.php
 
 ErrorDocument 404 /pet-life/public/404.php

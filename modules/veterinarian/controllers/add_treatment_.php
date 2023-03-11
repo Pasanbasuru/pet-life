@@ -491,7 +491,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             });
             checkbox3.addEventListener('change', (event) => {
-                console.log(event.currentTarget.checked);
                 if (event.currentTarget.checked) {
                     document.getElementById("vac").style.cssText = 'display: inline-block; -webkit-column-count: 2';
                     document.getElementById("med").style.cssText = 'display: none';
@@ -546,7 +545,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     sCheckBox.style = 'background-color:red';
                     checkInputs = false;
                 }
-
                   
                 if(sympotmsTA.value == '') {
                     sympotmsTA.style = "border-color: red"; 

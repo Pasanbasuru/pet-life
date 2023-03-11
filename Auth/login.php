@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         if ($row["emp_designation"] == "Veterinarian") {
-            $_SESSION['login_user'] = $myemail;
+            $_SESSION['login_user'] = $row["emp_email"];
             $_SESSION['user_name'] = $row["emp_name"];
             header("location: /pet-life/modules/veterinarian/controllers/dashboard.php");
         }
