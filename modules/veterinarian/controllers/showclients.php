@@ -1,3 +1,7 @@
+<?php
+include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/db/dbconnection.php');
+include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/modules/veterinarian/permission.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,30 +21,33 @@
 <body>
     <div class="sidebar">
         <div class="user-img">
-            <center><img src="../images/logo_transparent black.png"></center>
+            <img src="../images/logo_transparent black.png">
         </div>
         <ul>
             <li>
                 <a href="dashboard.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a>
             </li>
             <li>
-                <a href="#" class="active"><i class="fa fa-user"></i></i><span>Clients</span></a>
-            </li>
-
-            <li>
-                <a href="#"><i class="fa-solid fa-file"></i><span>Leave Request</span></a></a>
+                <a href="showclients.php" class="active"><i class="fa fa-user"></i></i><span>Clients</span></a>
             </li>
             <li>
-                <a href="#"><i class="fa-solid fa-circle-user"></i><span>My Profile</span></a>
+                <a href="treatment_history.php"><i class="fa-solid fa-calendar-plus"></i><span>Treatment
+                        History</span></a></a>
+            </li>
+            <li>
+                <a href="leaverequest.php"><i class="fa-solid fa-file"></i><span>Leave Request</span></a></a>
+            </li>
+            <li>
+                <a href="updateprofile.php"><i class="fa-solid fa-circle-user"></i><span>My Profile</span></a>
             </li>
         </ul>
         <div class="logout">
             <hr>
-            <a href="logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
+            <a href="/pet-life/Auth/logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
         </div>
     </div>
 
-    <!-- //Navigation bar ends -->
+    <!-- //Left Navigation bar ends -->
 
 
     <div class="content">
@@ -50,8 +57,10 @@
                     <i class="fa-solid fa-bars"></i>
                 </div>
                 <div class="hello">
-                    <font class="header-font-1">Welcome </font> &nbsp 
-                    <font class="header-font-2">Dr John</font>
+                    <font class="header-font-1">Welcome </font> &nbsp
+                    <font class="header-font-2">
+                        <?php echo $_SESSION['user_name']; ?>
+                    </font>
                 </div>
             </div>
 
@@ -65,7 +74,7 @@
                     </li>
                     <li>
                         <a href="#">
-                        <i class="fa-solid fa-message"></i>
+                            <i class="fa-solid fa-message"></i>
                         </a>
                     </li>
                     <li>
@@ -78,58 +87,94 @@
         </div>
         <div class="container">
             <div class="heading">Clients' Details</div>
+            <div class="search-field">
+                <input type="text" name="" id="live-search" class="form-control" autocomplete="off"
+                    placeholder="Search Here..">
+            </div>
+            <div class="save-btn">
+                <button onclick="saveTreatment(event)" class="button-01" name="save-info" id="btn-save" type="submit"
+                    role="button"><a href="user.php"> + Add new Client</a></button>
+            </div>
             <div class="data-table">
                 <table id="showclients">
                     <tr>
-                        <th> Client ID </th>
-                        <th>Name</th>
-                        <th> Date Registered</th>
-                        <th> Address </th>
-                        <th> Mobile</th>
-                        <th> Email</th>
-                        <th> Action</th>
+                        <th>Pet Owner's ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Email</th>
+                        <th>Contact Number</th>
+                        <th>Address</th>
+                        <th>NIC</th>
+                        <th>Password</th>
+                        <th>Action</th>
                     </tr>
-                    <tr>
-                        <td>C001</td>
-                        <td>Sachintha</td>
-                        <td>02/05/2022</td>
-                        <td>No.24, New York</td>
-                        <td>0789414977</td>
-                        <td>sachintha@gmail.com</td>
-                        <td> <a href="viewcustomer.php"><i class="fa-sharp fa-solid fa-eye"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>C002</td>
-                        <td>John</td>
-                        <td>02/05/2022</td>
-                        <td>No.74, New York</td>
-                        <td>0705369977</td>
-                        <td>john@gmail.com</td>
-                        <td> <a href="viewcustomer.php"><i class="fa-sharp fa-solid fa-eye"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>C003</td>
-                        <td>Swanson</td>
-                        <td>02/05/2022</td>
-                        <td>No.38/4, New York</td>
-                        <td>0705836977</td>
-                        <td>swan@gmail.com</td>
-                        <td> <a href="viewcustomer.php"><i class="fa-sharp fa-solid fa-eye"></i></a></td>
-                    </tr>
-                    <tr>
-                        <td>C004</td>
-                        <td>Brown</td>
-                        <td>02/05/2022</td>
-                        <td>No.4,London</td>
-                        <td>0789814977</td>
-                        <td>brown@yahooo.com</td>
-                        <td> <a href="viewcustomer.php"><i class="fa-sharp fa-solid fa-eye"></i></a></td>
-                    </tr>
+                    <?php
+                    $sql = "SELECT * from pet_owner";
+                    $clients = mysqli_query($conn, $sql);
+                    if ($clients) {
+                        while ($row = mysqli_fetch_assoc($clients)) {
+                            $id = $row['owner_id'];
+                            $fname = $row['owner_fname'];
+                            $lname = $row['owner_lname'];
+                            $email = $row['owner_email'];
+                            $tpn = $row['owner_contactno'];
+                            $address = $row['owner_address'];
+                            $nic = $row['owner_nic'];
+                            $pwd = $row['owner_pwd'];
+                            echo '<tr>
+                            <td>' . $id . '</td>
+                            <td>' . $fname . '</td>
+                            <td>' . $lname . '</td>
+                            <td>' . $email . '</td>
+                            <td>' . $tpn . '</td>
+                            <td>' . $address . '</td>
+                            <td>' . $nic . '</td>
+                            <td>' . $pwd . '</td>
+                            <td>
+                            <div class="action all" style="display:flex;">
+                            <a href="viewcustomer.php"><i class="fa-sharp fa-solid fa-eye" style="margin:5px;"></i></a>
+                            <a href="update_customer.php? updateid=' . $id . '"><i class="fa-sharp fa-solid fa-pen-to-square" style="margin:5px;"></i></a>
+                            <a href="delete_customer.php? deleteid=' . $id . '"><i class="fa-sharp fa-solid fa-trash" style="color: #542121; margin:5px;"></i></a>
+                            </div>
+                            </td>
+                            </tr>';
+                        }
+
+                    }
+
+                    ?>
+
                 </table>
 
             </div>
         </div>
-        <script src="script.js"></script>
+    </div>
+    <div id="searchresult">
+
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#live-search").keyup(function () {
+                var input = $(this).val();
+                // alert(input);
+                if (input != "") {
+                    $.ajax({
+                        url: "livesearch.php",
+                        method: "POST",
+                        data: {input: input},
+
+                        success: function (data) {
+                            $("#searchresult").html(data);
+                        }
+                    });
+                }else{
+                    $("#searchresult").css("display","none");
+                }
+            });
+        });
+
+    </script>
 </body>
 
 </html>
