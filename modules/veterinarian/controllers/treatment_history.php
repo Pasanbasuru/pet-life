@@ -219,7 +219,7 @@ if (isset($_GET['searchQuery']) && $_GET['searchQuery'] != '') {
     <link rel="stylesheet" href="../css/treatment_history.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <title>Pet Care</title>
+    <title></title>
 </head>
 
 <body onload="onLoad()">
@@ -229,20 +229,22 @@ if (isset($_GET['searchQuery']) && $_GET['searchQuery'] != '') {
             <center><img src="../images/logo_transparent black.png"></center>
         </div>
         <ul>
-            <li>
+        <li>
                 <a href="dashboard.php"><i class="fa fa-tachometer"></i><span>Dashboard</span></a>
             </li>
-
+           
             <li>
-                <a href="showclients.php" class="active"><i class="fa fa-user"></i></i><span>Clients</span></a>
+                <a href="showclients.php"><i class="fa fa-user"></i></i><span>Clients</span></a>
             </li>
-
             <li>
-                <a href="#"><i class="fa-solid fa-file"></i><span>Leave Request</span></a></a>
+                <a href="treatment_history.php" class="active"><i class="fa-solid fa-calendar-plus"></i><span>Treatment History</span></a></a>
             </li>
-
             <li>
-                <a href="#"><i class="fa-solid fa-circle-user"></i><span>My Profile</span></a>
+                <a href="leaverequest.php"><i class="fa-solid fa-file"></i><span>Leave Request</span></a></a>
+            </li>
+         
+            <li>
+                <a href="updateprofile.php"><i class="fa-solid fa-circle-user"></i><span>My Profile</span></a>
             </li>
         </ul>
         <div class="logout">
@@ -251,15 +253,19 @@ if (isset($_GET['searchQuery']) && $_GET['searchQuery'] != '') {
         </div>
     </div>
 
-    <!-- //Navigation bar -->
+    
     <div class="content">
+        <!-- //Top Navigation bar starts-->
         <div class="navbar">
             <div class="navbar__left">
                 <div class="nav-icon">
                     <i class="fa-solid fa-bars"></i>
                 </div>
-                <div class="hello" style="margin-left: 25vw">
-                    <font>Treatment history</font>
+                <div class="hello">
+                    <font class="header-font-1">Welcome </font> &nbsp
+                    <font class="header-font-2">
+                        <?php echo $_SESSION['user_name']; ?>
+                    </font>
                 </div>
             </div>
 
@@ -276,11 +282,13 @@ if (isset($_GET['searchQuery']) && $_GET['searchQuery'] != '') {
                             <i class="fa-solid fa-message"></i>
                         </a>
                     </li>
-                    <li>
-                    </li>
                 </ul>
             </div>
         </div>
+ <!-- //Top Navigation bar ends-->
+        <div class="container">
+        <!-- <div class="heading">Treatment History</div> -->
+        <p class="topic">Treatment History </p><hr><br>
         <div class="toast" style="display: none;">
 
             <div class="toast-content">
@@ -550,10 +558,10 @@ if (isset($_GET['searchQuery']) && $_GET['searchQuery'] != '') {
 
                 </tbody>
             </table>
-
+            
         </div>
-
-
+        
+        </div>
     </div>
 
 

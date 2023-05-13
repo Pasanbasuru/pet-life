@@ -19,6 +19,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/modules/veterinarian/permission.p
 </head>
 
 <body>
+    <div class="main" >
     <div class="sidebar">
         <div class="user-img">
             <img src="../images/logo_transparent black.png">
@@ -78,15 +79,14 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/modules/veterinarian/permission.p
                         </a>
                     </li>
                     <li>
-                        <!-- <a href="">
-                            <span id="designation">Admin</span>
-                        </a> -->
+                       
                     </li>
                 </ul>
             </div>
         </div>
         <div class="container">
-            <div class="heading">Clients' Details</div>
+            <br/><br/><br/>
+            <p class="topic">Clients</p><hr><br>
             <div class="table-btn">
                 <div class="search-field">
                     <input type="text" class="search-input" id="live-search" class="form-control" autocomplete="off" placeholder="search on NIC">
@@ -97,7 +97,10 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/modules/veterinarian/permission.p
                         <i class="fa-solid fa-reply-all" ></i>
                         <span class="tooltiptext tooltip-all-t">all treatments</span>
                     </div>
-                    <button onclick="saveTreatment(event)" class="button-01" name="save-info" id="btn-save" type="submit" role="button"><a href="user.php"> + Add new Client</a></button>
+                    <br>
+                    <button onclick="saveTreatment(event)" class="btn-add" name="" type="submit" role="button">
+                    <a style="color:black;"href="user.php" > + Add new Client</a>
+                    </button>
                 </div>
             </div>
             <div class="data-table">
@@ -110,15 +113,14 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/modules/veterinarian/permission.p
                         <th>Contact Number</th>
                         <th>Address</th>
                         <th>NIC</th>
-                        <th>Password</th>
                         <th>Action</th>
                     </tr>
                     <?php
                     if (isset($_GET['nic']) && $_GET['nic'] != '') {
                         $nic = $_GET['nic'];
-                        $sql = "SELECT * from pet_owner WHERE owner_nic LIKE '%$nic%'";
+                        $sql = "SELECT * from pet_owner WHERE owner_nic LIKE '%$nic%' AND owner_status='Registered'";
                     } else {
-                        $sql = "SELECT * from pet_owner";
+                        $sql = "SELECT * from pet_owner WHERE owner_status='Registered'";
                     }
 
                     $clients = mysqli_query($conn, $sql);
@@ -126,28 +128,25 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/modules/veterinarian/permission.p
                     if ($clients) {
                         // die(mysqli_fetch_assoc($clients));
                         while ($row = mysqli_fetch_assoc($clients)) {
-                            $id = $row['owner_id'];
+                            $owner_id = $row['owner_id'];
                             $fname = $row['owner_fname'];
                             $lname = $row['owner_lname'];
                             $email = $row['owner_email'];
                             $tpn = $row['owner_contactno'];
                             $address = $row['owner_address'];
                             $nic = $row['owner_nic'];
-                            $pwd = $row['owner_pwd'];
                             echo '<tr>
-                            <td>' . $id . '</td>
+                            <td>' . $owner_id . '</td>
                             <td>' . $fname . '</td>
                             <td>' . $lname . '</td>
                             <td>' . $email . '</td>
                             <td>' . $tpn . '</td>
                             <td>' . $address . '</td>
                             <td>' . $nic . '</td>
-                            <td>' . $pwd . '</td>
                             <td>
                             <div class="action all" style="display:flex;">
-                            <a href="viewcustomer.php"><i class="fa-sharp fa-solid fa-eye" style="margin:5px;"></i></a>
-                            <a href="update_customer.php? updateid=' . $id . '"><i class="fa-sharp fa-solid fa-pen-to-square" style="margin:5px;"></i></a>
-                            <a href="delete_customer.php? deleteid=' . $id . '"><i class="fa-sharp fa-solid fa-trash" style="color: #542121; margin:5px;"></i></a>
+                            <a href="viewcustomer.php? owner_id=' . $owner_id . '"><i class="fa-sharp fa-solid fa-eye" style="margin:5px;"></i></a>
+                            <a href="update_customer.php? owner_id=' . $owner_id . '"><i class="fa-sharp fa-solid fa-pen-to-square" style="margin:5px;"></i></a>
                             </div>
                             </td>
                             </tr>';
@@ -169,6 +168,9 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/modules/veterinarian/permission.p
             </div>
         </div>
     </div>
+    <!-- Content ends -->
+    
+    
     <div id="searchresult">
 
     </div>
@@ -201,6 +203,7 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/modules/veterinarian/permission.p
             });
         });
     </script>
+    </div>
 </body>
 
 </html>

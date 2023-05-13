@@ -1,5 +1,5 @@
 <?php
-include("dbconnection.php");
+include("../../db/dbconnection.php");
 session_start();
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -14,7 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $owner_email = mysqli_real_escape_string($conn, $_POST['owner_email']);
         $owner_pwd = mysqli_real_escape_string($conn, $_POST['owner_pwd']);
 
-        $sql = "SELECT * FROM pet_owner WHERE owner_email = '$owner_email'";
+        $sql = "SELECT * FROM pet_owner WHERE owner_email = '$owner_email' AND owner_status != 'Deleted'";
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);
 
@@ -23,10 +23,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($hashedPassword == $row["owner_pwd"]) {
                 $_SESSION['login_user'] = $owner_email;
                 $_SESSION['user_name'] = $row["owner_fname"];
-                header("location: ../pet owner/dashboard1.php");
+                header("location: ../pet owner/dashboard.php");
             } else {
                 echo '<script>alert("Wrong User Details")</script>';
             }
+           
+        }
+        else {
+            echo '<script>alert("Wrong User Details")</script>';
         }
     }
 }
@@ -45,9 +49,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <body>
 
-
     <div class="container">
-
+        
         <div class="right">
             <form method="POST">
                 <p class="welcome">Welcome To</p>
@@ -61,9 +64,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input type="password" name="owner_pwd" placeholder="password"><br>
                 </div>
                 <p>
-                    <button class="btn-login" type="submit">Login</button>
+                    <button class="btn-add" type="submit">Login</button>
 
-                    <button class="btn-exit" type="submit" onclick="document.location='home.php'">Cancel</button>
+                    <button class="btn-add" type="submit" onclick="document.location='home.php'">Cancel</button>
                 </p>
                 <div>
                     <span class="psw">Don't have an account? <a href="./register.php">Sign Up</a></span>

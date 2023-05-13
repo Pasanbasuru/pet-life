@@ -108,14 +108,12 @@ body {
   padding-left: 1rem;
   margin-right: 5rem;
 }
-
 .content {
-  position: relative;
+  /*position: relative;*/
   background: var(--backgroundcolour3);
   width: 82%;
   margin-left: 18%;
 }
-
 .logout hr {
   width: 80%;
   margin-bottom: 2px;
@@ -123,7 +121,6 @@ body {
 }
 
 /*Navbar*/
-
 .navbar {
   position: fixed;
   display: flex;
@@ -191,37 +188,47 @@ body {
 .navbar__right ul li a i {
   font-size: 1.5rem;
 }
+/* navbar ends */
+.container {
+  /*margin-top: 20px;*/
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  width: 100%;
+}
 
-.pet-name {
-  font-family: "Poppins";
+.content {
+  width: 82%;
+  float: right;
+  background-size: cover;
+  background-position: center;
+}
+
+.heading {
+  margin-top: 94px;
+  margin-left: 30px;
+  font-family: poppins, sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
-  margin-top: 30px;
-  margin-left: 70px;
+  font-size: 24px;
+  display: flex;
+  justify-content: left;
 }
-
-.pet-img {
-  width: 30%;
-  position: absolute;
-  left: 80px;
-  top: 100px;
-}
-
 .filter-panel {
   position: absolute;
-  margin-top: 91px;
+ /* margin-top: 91px;*/
   margin-left: 46px;
 }
 .action-panel {
   position: absolute;
-  margin-top: 106px;
+ margin-top: 18px;
   display: flex;
   width: 185px;
   justify-content: space-between;
   right: 4.1%;
   font-size: 18px;
   color: #014055;
+  
 }
 
 .action-panel i:hover {
@@ -460,14 +467,14 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .input-search {
-  width: 185px;
+  width: 220px;
   height: auto;
   border-style: none;
   font-size: 14px;
   letter-spacing: 1px;
   outline: none;
   border-radius: 0px;
-  transition: width 0.5s ease-in-out;
+  /* transition: width 0.5s ease-in-out; */
   background-color: inherit;
   padding-right: 40px;
   color: #063e46;
@@ -518,7 +525,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .table-view {
-  margin-top: 120px;
+  margin-top: 40px;
   margin-left: 30px;
   position: absolute;
 }
@@ -588,26 +595,28 @@ td {
 }
 
 table {
-  background: #012b39;
+  /* background: #012b39; */
+  background: #96CDE1;
   border-radius: 0.25em;
   border-collapse: collapse;
   margin: 1em;
 }
 tfoot td {
   text-align: center;
-  color: #e2b842;
+  color: black;
 }
 th {
   border-bottom: 1px solid #364043;
-  color: #e2b842;
+  color: black;
   font-size: 0.85em;
   font-weight: 600;
   padding: 0.5em 1em;
   text-align: center;
 }
 td {
-  color: #fff;
-  font-weight: 400;
+  /* color: #fff; */
+  color: black;
+  font-weight: 600;
   padding: 0.65em 1em;
   text-align: center;
 }
@@ -618,7 +627,8 @@ tbody tr {
   transition: background 0.25s ease;
 }
 tbody tr:hover {
-  background: #014055;
+  /* background: #014055; */
+  background: #fff;
 }
 
 tr {
@@ -626,7 +636,7 @@ tr {
 }
 tbody {
   display: block;
-  height: 465px;
+  height:280px;
   overflow: auto;
   overflow-x: hidden;
   font-size: 13px;
@@ -681,7 +691,8 @@ tr.action td {
 
 .expand-data {
   font-size: 20px;
-  color: darkgray;
+  /* color: darkgray; */
+  color: black;
 }
 
 .expand-data:hover {
@@ -694,13 +705,17 @@ tr.action td {
 }
 .expand-label-right {
   margin-right: 19px;
-  color: blanchedalmond;
+  /* color: blanchedalmond; */
+  color: black;
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 .expand-item {
   display: inline-flex;
+}
+#expand-icon{
+  color: #07181d;
 }
 .expand-row {
   display: flex;
@@ -719,15 +734,16 @@ tr.action td {
   padding: 4px;
   display: inline-flex;
   align-items: center;
+  color: #000;
 }
 
 .ex-icon {
   padding: 4px;
-  color: chartreuse;
+  color: black;
 }
 .ex-icon-no {
   padding: 4px;
-  color: #d46a6a;
+  color: red;
 }
 
 ::-webkit-scrollbar {
@@ -844,6 +860,14 @@ tr.action td {
 .progress.active:before {
   animation: progress 3s linear forwards;
 }
+.topic{
+  font-size: 40px;
+  font-weight: 950;
+  margin-left:50px;
+  margin-top: 100px;
+}
+
+
 
 @keyframes progress {
   100% {

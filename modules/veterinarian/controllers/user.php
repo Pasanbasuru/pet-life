@@ -3,32 +3,34 @@ include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/db/dbconnection.php');
 include($_SERVER['DOCUMENT_ROOT'] . '/pet-life/modules/veterinarian/permission.php');
 
 //generate next owner ID
-$sql_get_id="SELECT owner_id FROM pet_owner ORDER BY owner_id DESC LIMIT 1";
-$result_get_id=mysqli_query($conn,$sql_get_id);
-$row=mysqli_fetch_array($result_get_id);
- 
-$lastid="";
-                     
-     if(mysqli_num_rows($result_get_id)>0){
-         $lastid=$row['owner_id'];
-     }
- 
-     if($lastid==""){
-         $owner_id="O001";
-     }else {
-         $owner_id=substr($lastid,3);
-         $owner_id=intval($owner_id);
- 
-         if($owner_id>=9){
-             $owner_id="O0".($owner_id+1);
-         } else if($owner_id>=99){
-             $owner_id="O".($owner_id+1);
-         }else{
-             $owner_id="O00".($owner_id+1);
-         }
-     }
 
-if(isset($_POST['save-info'])){
+$sql_get_id = "SELECT owner_id FROM pet_owner ORDER BY owner_id DESC LIMIT 1";
+$result_get_id = mysqli_query($conn, $sql_get_id);
+$row = mysqli_fetch_array($result_get_id);
+
+$lastid = "";
+
+if (mysqli_num_rows($result_get_id) > 0) {
+    $lastid = $row['owner_id'];
+}
+
+if ($lastid == "") {
+    $owner_id = "O001";
+} else {
+    $owner_id = substr($lastid, 3);
+    $owner_id = intval($owner_id);
+
+    if ($owner_id >= 9) {
+        $owner_id = "O0" . ($owner_id + 1);
+    } else if ($owner_id >= 99) {
+        $owner_id = "O" . ($owner_id + 1);
+    } else {
+        $owner_id = "O00" . ($owner_id + 1);
+    }
+}
+
+if (isset($_POST['save-info'])) {
+    // Retrieve form field values
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
     $email = $_POST['email'];
@@ -37,15 +39,65 @@ if(isset($_POST['save-info'])){
     $nic = $_POST['nic'];
     $pwd = $_POST['password'];
 
-    $sql = "INSERT INTO pet_owner(owner_id,owner_fname,owner_lname,owner_email,owner_contactno,owner_address,owner_nic,owner_pwd)
-    values ('$owner_id','$fname','$lname',' $email','$tpn','$address','$nic','$pwd')";
-    $clients = mysqli_query($conn,$sql);
+  
 
-    if($clients){
-        echo '<script>alert("New Owner Added Successfully!")</script>';
-        header('location:showclients.php');
-    }else{
-        die("Connection failed: " . mysqli_connect_error());
+    if (empty($fname)) {
+        $owner_fname_error = "Your can't keep first name as empty.";
+    }
+
+   /* if (empty($emp_address)) {
+        $emp_address_error = "Please enter the employee's address.";
+    }*/
+
+    if (!preg_match('/^(\+\d{2})?\d{9}$/', $tpn)) {
+        $owner_contactno_error = "Please enter a valid contact number.";
+    }
+
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $owner_email_error = "Please enter a valid email address.";
+    }
+
+    if (!preg_match('/^[0-9]{9}[v]$/', $nic) && !preg_match('/^[0-9]{12}$/', $nic)) {
+        $owner_nic_error = "Please enter a valid NIC number.";
+    }
+
+if (empty($pwd)) {
+        $owner_pwd_error = "Your can't keep owner passsword as empty.";
+    }
+   /* if (empty($emp_dateassigned)) {
+        $emp_dateassigned_error = "Please enter the date the employee was assigned.";
+    }*/
+
+    /*if (empty($working_status)) {
+        $working_status_error = "Please enter the working status of the employee.";
+    }*/
+
+    // Check if there are any errors
+    if (empty($owner_fname_error) && empty($owner_contactno_error) && empty($owner_nic_error) && empty($owner_pwd_error)) {
+        // Insert the employee record into the database
+        $sql = "INSERT INTO pet_owner  VALUES ('$owner_id','$fname', '$lname', '$email', '$tpn', '$address', '$nic', '$pwd','Current')";
+        $result = mysqli_query($conn, $sql);
+
+        // Check if the insert was successful
+        if ($result) {
+            // Set a message to display
+            $message = "Employee record added successfully.";
+            
+            // Clear the form fields
+            
+            $fname = '';
+            $lname = '';
+            $email = '';
+            $tpn = '';
+            $address = '';
+            $nic = '';
+            $pwd = '';
+            
+        } else {
+            // Set an error message to display
+            $message = "Error adding employee record: " . mysqli_error($conn);
+        }
     }
 }
 ?>
@@ -104,7 +156,9 @@ if(isset($_POST['save-info'])){
                 </div>
                 <div class="hello">
                     <font class="header-font-1">Welcome </font> &nbsp
-                    <font class="header-font-2"> <?php echo $_SESSION['user_name'];?></font>
+                    <font class="header-font-2">
+                        <?php echo $_SESSION['user_name']; ?>
+                    </font>
                 </div>
             </div>
 
@@ -117,7 +171,7 @@ if(isset($_POST['save-info'])){
                         </a>
                     </li>
                     <li>
-r                        <a href="#">
+                        r <a href="#">
                             <i class="fa-solid fa-message"></i>
                         </a>
                     </li>
@@ -130,62 +184,81 @@ r                        <a href="#">
             </div>
         </div>
 
-<div class="container">
-        <!-- //Top Navigation bar ends -->
-        <!-- //Registration form starts -->
-        <div class="sub-container">
-        <div class="heading">New Client Registration</div>
-            <form action="#" class="form" method="post"  >
-                <div class="input-box">
-                    <label>Pet Owner's ID: </label>
-                    <label><?php echo $owner_id;?></label>
-                </div>
-                <div class="input-box">
-                    <label>First Name</label>
-                    <input type="text" name="fname" placeholder="Enter First Name" required>
-
-                </div>
-                <div class="input-box">
-                    <label>Last Name</label>
-                    <input type="text" name="lname" placeholder="Enter Last Name" required>
-
-                </div>
-                <div class="input-box">
-                    <label>Email</label>
-                    <input type="text" name="email" placeholder="Enter Email" required>
-
-                </div>
-                <div class="input-box">
-                    <label>Contact Number</label>
-                    <input type="text" name="tpn" placeholder="Enter Contact Number" required>
-
-                </div>
-                <div class="input-box">
-                    <label>Address</label>
-                    <input type="text" name="address" placeholder="Enter Address" required>
-
-                </div>
-                <div class="column">
+        <div class="container">
+            <!-- //Top Navigation bar ends -->
+            <!-- //Registration form starts -->
+            <div class="sub-container">
+                <div class="heading">New Client Registration</div>
+                <form action="user.php" class="form" method="post">
                     <div class="input-box">
-                        <label>NIC</label>
-                        <input type="text" name="nic" placeholder="Enter NIC" required>
+                        <label>Pet Owner's ID: </label>
+                        <label>
+                            <?php echo $owner_id; ?>
+                        </label>
+                    </div>
+                    <div class="input-box">
+                        <label>First Name</label>
+                        <input type="text" name="fname" placeholder="Enter First Name">
+                        <?php if (isset($owner_fname_error)): ?>
+        <span style="color: red;"><?php echo $owner_fname_error; ?></span>
+    <?php endif; ?>
+                    </div>
+                    <div class="input-box">
+                        <label>Last Name</label>
+                        <input type="text" name="lname" placeholder="Enter Last Name">
 
                     </div>
                     <div class="input-box">
-                        <label>Password</label>
-                        <input type="password" name="password" placeholder="Enter Password" required>
+                        <label>Email</label>
+                        <input type="text" name="email" placeholder="Enter Email">
+                        <?php if (isset($owner_email_error)): ?>
+        <span style="color: red;"><?php echo $owner_email_error; ?></span>
+    <?php endif; ?>
 
                     </div>
-                </div>
-                <br>
-                <div class="save-btn">
-                    <button onclick="saveTreatment(event)" class="button-01" name="save-info" id="btn-save"
-                        type="submit" role="button">Submit</button>
-                </div>
-            </form>
-</div>
+                    <div class="input-box">
+                        <label>Contact Number</label>
+                        <input type="text" name="tpn" placeholder="Enter Contact Number">
+                        <?php if (isset($owner_contactno_error)): ?>
+        <span style="color: red;"><?php echo $owner_contactno_error; ?></span>
+    <?php endif; ?>
 
-    </div>
+                    </div>
+                    <div class="input-box">
+                        <label>Address</label>
+                        <input type="text" name="address" placeholder="Enter Address">
+
+                    </div>
+                    <div class="column">
+                        <div class="input-box">
+                            <label>NIC</label>
+                            <input type="text" name="nic" placeholder="Enter NIC">
+                            <?php if (isset($owner_nic_error)): ?>
+        <span style="color: red;"><?php echo $owner_nic_error; ?></span>
+    <?php endif; ?>
+
+                        </div>
+                        <div class="input-box">
+                            <label>Password</label>
+                            <input type="password" name="password" placeholder="Enter Password">
+                            <?php if (isset($owner_pwd_error)): ?>
+        <span style="color: red;"><?php echo $owner_pwd_error; ?></span>
+    <?php endif; ?>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="save-btn">
+                        <!-- <button onclick="saveTreatment(event)" class="button-01" name="save-info" id="btn-save"
+                            type="submit" role="button">Submit
+                        </button> -->
+                        <button class="btn-add" type="submit" role="button">
+                    <a style="color:black;"href="user.php" > Submit</a>
+                    </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
 
 </body>
 

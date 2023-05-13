@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/viewitem.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <title>Document</title>
+    <title>Welcome to Pet Life</title>
 </head>
 <body>
     <div class="main-container">
@@ -30,12 +30,13 @@
                 <li><a href="dashboard.php"><i class="fa fa-tachometer"></i><span>Home</span></a></li>
                 <li><a class="active" href="viewallitems.php"><i class="fa fa-paw"></i><span>Pet Items</span></a></li>
                 <li><a href="viewallmedicine.php"><i class="fa fa-stethoscope"></i><span>Medicine</span></a></li>
-                <li><a href="#"><i class="fa-solid fa-file"></i><span>Leave Requests</span></a></li>
+                <li><a href="viewallbatch.php"><i class="fa fa-stethoscope"></i><span>Batch</span></a></li>
+                <li><a href="leaverequest.php"><i class="fa-solid fa-file"></i><span>Leave Requests</span></a></li>
                 <li><a href="updateprofile.php"><i class="fa-solid fa-circle-user"></i><span>My Profile</span></a></li>
         </ul>
         <div class="logout">
             <hr>
-            <a href="logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
+            <a href="../../Auth/logout.php"><i class="fa-solid fa-sign-out"></i><span>Logout</span></a>
         </div>        
     </div>
     
@@ -45,9 +46,7 @@
     <div class="right-container">
     
         <div class="top-bar">
-            <div class="nav-icon">
-                <i class="fa-solid fa-bars"></i>
-            </div>
+            
             <div class="hello">
                 <font class="header-font-1">Welcome </font> &nbsp
                 <font class="header-font-2"><?php echo $_SESSION['user_name'];?> </font>

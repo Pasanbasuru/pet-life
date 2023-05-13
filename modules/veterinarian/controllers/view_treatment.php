@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../css/view_treatment.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
-    <title>Pet Care</title>
+    <title></title>
 </head>
 
 <body>
@@ -27,7 +27,9 @@
             <li>
                 <a href="showclients.php" class="active"><i class="fa fa-user"></i></i><span>Clients</span></a>
             </li>
-          
+            <li>
+                <a href="treatment_history.php"><i class="fa-solid fa-calendar-plus"></i><span>Treatment History</span></a></a>
+            </li>
             <li>
                 <a href="#"><i class="fa-solid fa-file"></i><span>Leave Request</span></a></a>
             </li>

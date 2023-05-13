@@ -18,6 +18,4 @@ if (mysqli_num_rows($result) > 0) {
 // Close MySQL connection
 mysqli_close($conn);
 
-
-
 ?>
